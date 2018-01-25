@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Modal from './Modal';
+import ContactForm from './ContactForm';
 
 class Home extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class Home extends Component {
           show={this.state.modalOpen}
           handleClose={this.toggleModal}
         >
-          Contact form!
+          <ContactForm />
         </Modal>
 
         <div className="intro">
