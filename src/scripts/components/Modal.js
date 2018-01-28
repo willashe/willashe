@@ -6,6 +6,16 @@ class Modal extends PureComponent {
     window.addEventListener('keydown', this.handleKeyDown, true);
   }
 
+  componentWillReceiveProps = nextProps => {
+    if (this.props.show && !nextProps.show) {
+      // close modal
+      console.log('close');
+    } else if (!this.props.show && nextProps.show) {
+      // open modal
+      console.log('open');
+    }
+  };
+
   handleKeyDown = e => {
     if (e.key === 'Escape' || e.keyCode === 27) {
       this.props.handleClose();
@@ -32,6 +42,8 @@ class Modal extends PureComponent {
             <button onClick={handleClose}>Close</button>
           </div>
         </div>
+
+        <div className="marquee bottom" onClick={this.preventClose} />
       </div>
     );
   }

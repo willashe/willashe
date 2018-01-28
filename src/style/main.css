@@ -42,6 +42,10 @@ a {
   }
 }
 
+button {
+  cursor: pointer;
+}
+
 canvas {
   position: fixed;
   z-index: -1;
@@ -150,6 +154,7 @@ h1 {
   height: 400px;
   width: 100vw;
   background: linear-gradient(118deg, rgba(45, 83, 85, 0.8), rgba(206, 83, 116, 0.8));
+  cursor: default;
 
   &.top {
     top: 50vh;
@@ -174,6 +179,8 @@ h1 {
   overflow: auto;
   text-align: center;
   padding: 4px;
+  z-index: 1;
+  cursor: pointer;
 }
 
 .modal-backdrop:after {
@@ -193,13 +200,14 @@ h1 {
   box-sizing: border-box;
   max-width: auto;
   cursor: default;
-  border-radius: 4px;
-  background: #fff;
-  padding: 10px;
+  z-index: 2;
+  /* border-radius: 4px; */
+  /* background: #fff; */
+  /* padding: 10px; */
 }
 
 .contact-form {
-  color: #222;
+  /* color: #222; */
 }
 
 @media (--medium-up) {

@@ -27,11 +27,6 @@ class Home extends PureComponent {
             Web Developer<br />Austin, TX
           </h2>
           <div className="contact-info">
-            {/*
-            <a onClick={alert.bind(null, 'Show contact form')}>
-              Contact
-            </a>
-            */}
             <a onClick={this.openModal}>Contact</a>
             <a href="http://www.linkedin.com/in/will-ashe">LinkedIn</a>
             <a href="https://github.com/willashe">GitHub</a>
