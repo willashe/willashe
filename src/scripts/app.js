@@ -2,10 +2,11 @@ import React from 'react';
 
 import Home from './components/Home';
 
-const App = () =>
+const App = () => (
   <div className="app">
     <Home />
     <div className="marquee top" />
-  </div>;
+  </div>
+);
 
 export default App;
