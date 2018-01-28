@@ -10,10 +10,12 @@ class Home extends Component {
     this.state = { modalOpen: false };
   }
 
-  toggleModal = () => {
-    this.setState({
-      modalOpen: !this.state.modalOpen
-    });
+  openModal = () => {
+    this.setState({ modalOpen: true });
+  }
+
+  closeModal = () => {
+    this.setState({ modalOpen: false });
   }
 
   render() {
@@ -21,7 +23,7 @@ class Home extends Component {
       <div className="home">
         <Modal
           show={this.state.modalOpen}
-          handleClose={this.toggleModal}
+          handleClose={this.closeModal}
         >
           <ContactForm />
         </Modal>
@@ -37,7 +39,7 @@ class Home extends Component {
               Contact
             </a>
             */}
-            <a onClick={this.toggleModal}>Contact</a>
+            <a onClick={this.openModal}>Contact</a>
             <a href="http://www.linkedin.com/in/will-ashe">LinkedIn</a>
             <a href="https://github.com/willashe">GitHub</a>
           </div>

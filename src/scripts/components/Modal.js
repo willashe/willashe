@@ -1,25 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const Modal = ({ show, handleClose, children }) => {
-  if (!show) {
-    return null;
+class Modal extends Component {
+  constructor(props) {
+    super(props);
   }
 
-  return (
-    <div className="modal-backdrop">
-      <div className="modal-body">
-        {children}
+  componentDidMount() {
+    window.addEventListener('keydown', this.handleKeyDown, true);
+  }
 
-        <div className="modal-footer">
-          <button onClick={handleClose}>
-            Close
-          </button>
+  handleKeyDown = (e) => {
+    if (e.key === 'Escape' || e.keyCode === 27) {
+      this.props.handleClose();
+    }
+  }
+
+  preventClose = (e) => {
+    e.stopPropagation();
+  }
+
+  render() {
+    const { show, handleClose, children } = this.props;
+
+    if (!show) {
+      return null;
+    }
+  
+    return (
+      <div className="modal-backdrop" onClick={handleClose}>
+        <div className="modal-body" onClick={this.preventClose}>
+          {children}
+  
+          <div className="modal-footer">
+            <button onClick={handleClose}>
+              Close
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
+};
 
 Modal.propTypes = {
   handleClose: PropTypes.func.isRequired,
