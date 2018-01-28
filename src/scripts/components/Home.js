@@ -1,30 +1,27 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import Modal from './Modal';
 import ContactForm from './ContactForm';
 
-class Home extends Component {
+class Home extends PureComponent {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = { modalOpen: false };
   }
 
   openModal = () => {
     this.setState({ modalOpen: true });
-  }
+  };
 
   closeModal = () => {
     this.setState({ modalOpen: false });
-  }
+  };
 
   render() {
     return (
       <div className="home">
-        <Modal
-          show={this.state.modalOpen}
-          handleClose={this.closeModal}
-        >
+        <Modal show={this.state.modalOpen} handleClose={this.closeModal}>
           <ContactForm />
         </Modal>
 

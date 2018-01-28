@@ -198,6 +198,10 @@ h1 {
   padding: 10px;
 }
 
+.contact-form {
+  color: #222;
+}
+
 @media (--medium-up) {
   body {
     font-size: 100%;
