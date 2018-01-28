@@ -21,10 +21,6 @@ class Home extends PureComponent {
   render() {
     return (
       <div className="home">
-        <Modal show={this.state.modalOpen} handleClose={this.closeModal}>
-          <ContactForm />
-        </Modal>
-
         <div className="intro">
           <h1>Will Ashe</h1>
           <h2>
@@ -169,6 +165,10 @@ class Home extends PureComponent {
             </li>
           </ul>
         </div>
+
+        <Modal show={this.state.modalOpen} handleClose={this.closeModal}>
+          <ContactForm />
+        </Modal>
       </div>
     );
   }
