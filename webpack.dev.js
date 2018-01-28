@@ -4,7 +4,7 @@ const CommonConfig = require('./webpack.common');
 
 module.exports = merge(CommonConfig, {
   entry: {
-    app: ['react-hot-loader/patch', './src/index.js'],
+    app: ['react-hot-loader/patch', './src/scripts/index.js'],
   },
   output: {
     publicPath: '/',

@@ -7,7 +7,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CommonConfig = require('./webpack.common');
 
 module.exports = merge(CommonConfig, {
-  entry: './src/index.js',
+  entry: './src/scripts/index.js',
   output: {
     filename: './bundle.js',
     path: path.resolve(__dirname, 'dist'),
