@@ -6,16 +6,6 @@ class Modal extends PureComponent {
     window.addEventListener('keydown', this.handleKeyDown, true);
   }
 
-  componentWillReceiveProps = nextProps => {
-    if (this.props.show && !nextProps.show) {
-      // close modal
-      console.log('close');
-    } else if (!this.props.show && nextProps.show) {
-      // open modal
-      console.log('open');
-    }
-  };
-
   handleKeyDown = e => {
     if (e.key === 'Escape' || e.keyCode === 27) {
       this.props.handleClose();
@@ -27,23 +17,31 @@ class Modal extends PureComponent {
   };
 
   render() {
-    const { show, handleClose, children } = this.props;
-
-    if (!show) {
+    const { v, open, handleClose, children } = this.props;
+    console.log(v);
+    if (!open) {
       return null;
     }
 
     return (
-      <div className="modal-backdrop" onClick={handleClose}>
-        <div className="modal-body" onClick={this.preventClose}>
-          {children}
+      <div
+        className="modal-backdrop"
+        onClick={handleClose}
+        style={{ background: `rgba(0,0,0,${v.bgOpacity}` }}
+      >
+        <div
+          className="modal-body"
+          onClick={this.preventClose}
+          style={{ top: `${v.modalTop}%` }}
+        >
+          <div className="modal-content">
+            {children}
 
-          <div className="modal-footer">
-            <button onClick={handleClose}>Close</button>
+            <div className="modal-footer">
+              <button onClick={handleClose}>Close</button>
+            </div>
           </div>
         </div>
-
-        <div className="marquee bottom" onClick={this.preventClose} />
       </div>
     );
   }
@@ -51,7 +49,7 @@ class Modal extends PureComponent {
 
 Modal.propTypes = {
   handleClose: PropTypes.func.isRequired,
-  show: PropTypes.bool,
+  open: PropTypes.bool,
   children: PropTypes.node,
 };
 

@@ -5,7 +5,7 @@ import Home from '../components/Home';
 const App = () => (
   <div className="app">
     <Home />
-    <div className="marquee top" />
+    <div className="marquee right" />
   </div>
 );
 

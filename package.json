@@ -24,6 +24,8 @@
     ]
   },
   "dependencies": {
+    "popmotion": "^8.1.9",
+    "popmotion-react": "^2.1.0",
     "postcss": "^6.0.8",
     "postcss-cssnext": "^3.0.2",
     "postcss-import": "^11.0.0",

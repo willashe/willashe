@@ -2,23 +2,70 @@ import React, { PureComponent } from 'react';
 
 import Modal from './Modal';
 import ContactForm from './ContactForm';
+import { tween, easing } from 'popmotion';
 
 class Home extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = { modalOpen: false };
+    this.state = {
+      modalOpen: false,
+      v: {
+        modalTop: -50,
+        bgOpacity: 0,
+      },
+    };
   }
 
+  updateModal = v => {
+    console.log(v);
+    this.setState({
+      v: {
+        modalTop: v.modalTop,
+        bgOpacity: v.bgOpacity,
+      },
+    });
+  };
+
   openModal = () => {
-    this.setState({ modalOpen: true });
+    this.setState({ modalOpen: true }, () => {
+      tween({
+        from: {
+          modalTop: -50,
+          bgOpacity: 0,
+        },
+        to: {
+          modalTop: 50,
+          bgOpacity: 0.65,
+        },
+        duration: 700,
+        ease: easing.backInOut,
+      }).start(this.updateModal);
+    });
   };
 
   closeModal = () => {
-    this.setState({ modalOpen: false });
+    tween({
+      from: {
+        modalTop: 50,
+        bgOpacity: 0.65,
+      },
+      to: {
+        modalTop: 150,
+        bgOpacity: 0,
+      },
+      duration: 700,
+      ease: easing.backInOut,
+    }).start({
+      update: this.updateModal,
+      complete: () => {
+        this.setState({ modalOpen: false });
+      },
+    });
   };
 
   render() {
+    console.log(this.state.v);
     return (
       <div className="home">
         <div className="intro">
@@ -161,7 +208,11 @@ class Home extends PureComponent {
           </ul>
         </div>
 
-        <Modal show={this.state.modalOpen} handleClose={this.closeModal}>
+        <Modal
+          v={this.state.v}
+          open={this.state.modalOpen}
+          handleClose={this.closeModal}
+        >
           <ContactForm />
         </Modal>
       </div>
