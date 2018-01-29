@@ -10,6 +10,7 @@ class Home extends PureComponent {
 
     this.state = {
       modalOpen: false,
+      modalInTransition: false,
       v: {
         modalTop: -50,
         bgOpacity: 0,
@@ -18,7 +19,6 @@ class Home extends PureComponent {
   }
 
   updateModal = v => {
-    console.log(v);
     this.setState({
       v: {
         modalTop: v.modalTop,
@@ -28,7 +28,7 @@ class Home extends PureComponent {
   };
 
   openModal = () => {
-    this.setState({ modalOpen: true }, () => {
+    this.setState({ modalInTransition: true }, () => {
       tween({
         from: {
           modalTop: -50,
@@ -40,32 +40,44 @@ class Home extends PureComponent {
         },
         duration: 700,
         ease: easing.backInOut,
-      }).start(this.updateModal);
+      }).start({
+        update: this.updateModal,
+        complete: () => {
+          this.setState({
+            modalOpen: true,
+            modalInTransition: false,
+          });
+        },
+      });
     });
   };
 
   closeModal = () => {
-    tween({
-      from: {
-        modalTop: 50,
-        bgOpacity: 0.65,
-      },
-      to: {
-        modalTop: 150,
-        bgOpacity: 0,
-      },
-      duration: 700,
-      ease: easing.backInOut,
-    }).start({
-      update: this.updateModal,
-      complete: () => {
-        this.setState({ modalOpen: false });
-      },
+    this.setState({ modalInTransition: true }, () => {
+      tween({
+        from: {
+          modalTop: 50,
+          bgOpacity: 0.65,
+        },
+        to: {
+          modalTop: 150,
+          bgOpacity: 0,
+        },
+        duration: 700,
+        ease: easing.backInOut,
+      }).start({
+        update: this.updateModal,
+        complete: () => {
+          this.setState({
+            modalOpen: false,
+            modalInTransition: false,
+          });
+        },
+      });
     });
   };
 
   render() {
-    console.log(this.state.v);
     return (
       <div className="home">
         <div className="intro">
@@ -210,8 +222,8 @@ class Home extends PureComponent {
 
         <Modal
           v={this.state.v}
-          open={this.state.modalOpen}
-          handleClose={this.closeModal}
+          open={this.state.modalInTransition || this.state.modalOpen}
+          handleClose={this.state.modalInTransition ? null : this.closeModal}
         >
           <ContactForm />
         </Modal>

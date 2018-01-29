@@ -18,7 +18,7 @@ class Modal extends PureComponent {
 
   render() {
     const { v, open, handleClose, children } = this.props;
-    console.log(v);
+
     if (!open) {
       return null;
     }
@@ -48,7 +48,7 @@ class Modal extends PureComponent {
 }
 
 Modal.propTypes = {
-  handleClose: PropTypes.func.isRequired,
+  handleClose: PropTypes.func,
   open: PropTypes.bool,
   children: PropTypes.node,
 };
