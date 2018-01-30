@@ -1,81 +1,22 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 
 import Skillset from './Skillset';
 import Modal from './Modal';
 import ContactForm from './ContactForm';
-import { tween, easing } from 'popmotion';
 
-class Home extends PureComponent {
+class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      modalOpen: false,
-      modalInTransition: false,
-      v: {
-        modalTop: -50,
-        bgOpacity: 0,
-      },
-    };
+    this.state = { modalOpen: false };
   }
 
-  updateModal = v => {
-    this.setState({
-      v: {
-        modalTop: v.modalTop,
-        bgOpacity: v.bgOpacity,
-      },
-    });
-  };
-
   openModal = () => {
-    this.setState({ modalInTransition: true }, () => {
-      tween({
-        from: {
-          modalTop: -50,
-          bgOpacity: 0,
-        },
-        to: {
-          modalTop: 50,
-          bgOpacity: 0.65,
-        },
-        duration: 700,
-        ease: easing.backInOut,
-      }).start({
-        update: this.updateModal,
-        complete: () => {
-          this.setState({
-            modalOpen: true,
-            modalInTransition: false,
-          });
-        },
-      });
-    });
+    this.setState({ modalOpen: true });
   };
 
   closeModal = () => {
-    this.setState({ modalInTransition: true }, () => {
-      tween({
-        from: {
-          modalTop: 50,
-          bgOpacity: 0.65,
-        },
-        to: {
-          modalTop: 150,
-          bgOpacity: 0,
-        },
-        duration: 700,
-        ease: easing.backInOut,
-      }).start({
-        update: this.updateModal,
-        complete: () => {
-          this.setState({
-            modalOpen: false,
-            modalInTransition: false,
-          });
-        },
-      });
-    });
+    this.setState({ modalOpen: false });
   };
 
   render() {
@@ -95,11 +36,7 @@ class Home extends PureComponent {
 
         <Skillset />
 
-        <Modal
-          v={this.state.v}
-          open={this.state.modalInTransition || this.state.modalOpen}
-          handleClose={this.state.modalInTransition ? null : this.closeModal}
-        >
+        <Modal modalOpen={this.state.modalOpen} handleClose={this.closeModal}>
           <ContactForm />
         </Modal>
       </div>
