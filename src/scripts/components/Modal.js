@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { CSSTransitionGroup } from 'react-transition-group';
 
 class Modal extends PureComponent {
   componentDidMount() {
@@ -21,7 +20,7 @@ class Modal extends PureComponent {
     const { children, handleClose } = this.props;
 
     return (
-      <div className="modal-backdrop" onClick={this.closeModal}>
+      <div className="modal-backdrop" onClick={handleClose}>
         <div className="modal-body" onClick={this.preventClose}>
           <div className="modal-content">
             {children}
