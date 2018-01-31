@@ -39,7 +39,7 @@ class Home extends Component {
 
         <CSSTransitionGroup
           transitionName="modal"
-          transitionEnterTimeout={700}
+          transitionEnterTimeout={750}
           transitionLeaveTimeout={700}
         >
           {this.state.modalOpen && (
