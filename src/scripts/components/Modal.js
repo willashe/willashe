@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 class Modal extends PureComponent {
   componentDidMount() {
@@ -17,23 +18,11 @@ class Modal extends PureComponent {
   };
 
   render() {
-    const { v, open, handleClose, children } = this.props;
-
-    if (!open) {
-      return null;
-    }
+    const { children, handleClose } = this.props;
 
     return (
-      <div
-        className="modal-backdrop"
-        onClick={handleClose}
-        style={{ background: `rgba(0,0,0,${v.bgOpacity}` }}
-      >
-        <div
-          className="modal-body"
-          onClick={this.preventClose}
-          style={{ top: `${v.modalTop}%` }}
-        >
+      <div className="modal-backdrop" onClick={this.closeModal}>
+        <div className="modal-body" onClick={this.preventClose}>
           <div className="modal-content">
             {children}
 
@@ -49,7 +38,6 @@ class Modal extends PureComponent {
 
 Modal.propTypes = {
   handleClose: PropTypes.func,
-  open: PropTypes.bool,
   children: PropTypes.node,
 };
 
