@@ -1,50 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 
+import ContactInfo from './ContactInfo';
 import Skillset from './Skillset';
-import ModalContainer from './ModalContainer';
-import ContactForm from './ContactForm';
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
+const Home = () => (
+  <div className="home">
+    <div className="intro">
+      <h1>Will Ashe</h1>
+      <h2>
+        Web Developer<br />Austin, TX
+      </h2>
 
-    this.state = { modalOpen: false };
-  }
+      <ContactInfo />
+    </div>
 
-  openModal = () => {
-    this.setState({ modalOpen: true });
-  };
-
-  closeModal = () => {
-    this.setState({ modalOpen: false });
-  };
-
-  render() {
-    return (
-      <div className="home">
-        <div className="intro">
-          <h1>Will Ashe</h1>
-          <h2>
-            Web Developer<br />Austin, TX
-          </h2>
-          <div className="contact-info">
-            <a onClick={this.openModal}>Contact</a>
-            <a href="http://www.linkedin.com/in/will-ashe">LinkedIn</a>
-            <a href="https://github.com/willashe">GitHub</a>
-          </div>
-        </div>
-
-        <Skillset />
-
-        <ModalContainer
-          modalOpen={this.state.modalOpen}
-          handleClose={this.closeModal}
-        >
-          <ContactForm />
-        </ModalContainer>
-      </div>
-    );
-  }
-}
+    <Skillset />
+  </div>
+);
 
 export default Home;
