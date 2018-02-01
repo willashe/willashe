@@ -168,17 +168,17 @@ h1 {
 }
 
 .modal-backdrop {
+  box-sizing: border-box;
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(0,0,0,0.65);
   text-align: center;
-  padding: 4px;
   z-index: 1;
-  cursor: pointer;
   will-change: background-color;
+  background-color: rgba(0,0,0,0.65);
+  cursor: pointer;
 
   & .modal-body {
     display: inline-flex;
@@ -187,11 +187,12 @@ h1 {
     vertical-align: middle;
     min-height: 400px;
     width: 100vw;
-    cursor: default;
     z-index: 2;
-    background: linear-gradient(118deg, rgba(45, 83, 85, 0.8), rgba(206, 83, 116, 0.8));
     transform: skew(0, -10deg);
     will-change: transform;
+    box-shadow: 0 2px 32px 10px rgba(0,0,0,0.15);
+    cursor: default;
+    background: linear-gradient(118deg, rgba(45, 83, 85, 0.8), rgba(206, 83, 116, 0.8));
   }
 
   &.modal-enter {
