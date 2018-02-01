@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { CSSTransitionGroup } from 'react-transition-group';
 
 import Skillset from './Skillset';
-import Modal from './Modal';
+import ModalContainer from './ModalContainer';
 import ContactForm from './ContactForm';
 
 class Home extends Component {
@@ -37,17 +36,12 @@ class Home extends Component {
 
         <Skillset />
 
-        <CSSTransitionGroup
-          transitionName="modal"
-          transitionEnterTimeout={750}
-          transitionLeaveTimeout={700}
+        <ModalContainer
+          modalOpen={this.state.modalOpen}
+          handleClose={this.closeModal}
         >
-          {this.state.modalOpen && (
-            <Modal handleClose={this.closeModal}>
-              <ContactForm />
-            </Modal>
-          )}
-        </CSSTransitionGroup>
+          <ContactForm />
+        </ModalContainer>
       </div>
     );
   }

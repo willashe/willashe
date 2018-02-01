@@ -2,16 +2,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 class Modal extends PureComponent {
-  componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyDown, true);
-  }
-
-  handleKeyDown = e => {
-    if (e.key === 'Escape' || e.keyCode === 27) {
-      this.props.handleClose();
-    }
-  };
-
   preventClose = e => {
     e.stopPropagation();
   };
@@ -36,7 +26,7 @@ class Modal extends PureComponent {
 }
 
 Modal.propTypes = {
-  handleClose: PropTypes.func,
+  handleClose: PropTypes.func.isRequired,
   children: PropTypes.node,
 };
 
