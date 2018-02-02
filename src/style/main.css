@@ -83,18 +83,16 @@ h1 {
   justify-self: center;
   align-self: self-end;
   text-shadow: 0px 2px 1px black;
-
-  & div {
-    margin: 1em 0 0;
-  }
 }
 
 .contact-info {
+  margin: 1em 0 0;
+
   & a:after {
     content: ' · ';
   }
 
-  & a:last-child:after {
+  & a:last-of-type:after {
     content: '';
   }
 }
@@ -167,18 +165,25 @@ h1 {
   }
 }
 
-.modal-backdrop {
-  box-sizing: border-box;
+.modal {
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  text-align: center;
   z-index: 1;
-  will-change: background-color;
-  background-color: rgba(0,0,0,0.65);
-  cursor: pointer;
+
+  & .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    will-change: transform;
+    background-color: rgba(0,0,0,0.65);
+    cursor: pointer;
+  }
 
   & .modal-body {
     display: inline-flex;
@@ -190,13 +195,15 @@ h1 {
     z-index: 2;
     transform: skew(0, -10deg);
     will-change: transform;
-    box-shadow: 0 2px 32px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 32px 10px rgba(0,0,0,0.25);
     cursor: default;
     background: linear-gradient(118deg, rgba(45, 83, 85, 0.8), rgba(206, 83, 116, 0.8));
   }
 
   &.modal-enter {
-    background-color: rgba(0,0,0,0);
+    & .modal-backdrop {
+      opacity: 0;
+    }
 
     & .modal-body {
       transform: skew(0, -10deg) translateY(-100vh);
@@ -204,8 +211,10 @@ h1 {
   }
   
   &.modal-enter-active {
-    background-color: rgba(0,0,0,0.65);
-    transition: background-color 500ms 0ms ease-in-out;
+    & .modal-backdrop {
+      opacity: 1;
+      transition: opacity 500ms 0ms ease-in-out;
+    }
 
     & .modal-body {
       transform: skew(0, -10deg) translateY(0vh);
@@ -214,7 +223,9 @@ h1 {
   }
   
   &.modal-leave {
-    background-color: rgba(0,0,0,0.65);
+    & .modal-backdrop {
+      opacity: 1;
+    }
 
     & .modal-body {
       transform: skew(0, -10deg) translateY(0vh);
@@ -222,8 +233,10 @@ h1 {
   }
   
   &.modal-leave-active {
-    background-color: rgba(0,0,0,0);
-    transition: background-color 500ms 200ms ease-in-out;
+    & .modal-backdrop {
+      opacity: 0;
+      transition: opacity 500ms 200ms ease-in-out;
+    }
 
     & .modal-body {
       transform: skew(0, -10deg) translateY(100vh);
@@ -232,7 +245,7 @@ h1 {
   }
 }
 
-.modal-backdrop:after {
+.modal:after {
   vertical-align: middle;
   display: inline-block;
   height: 100%;
@@ -242,10 +255,6 @@ h1 {
 
 .modal-content {
   transform: skew(0, 10deg);
-}
-
-.contact-form {
-  /* color: #222; */
 }
 
 @media (--medium-up) {
@@ -265,10 +274,10 @@ h1 {
     align-self: center;
     border-right: 1px solid var(--content);
     padding: 1em 1em 1em 0;
+  }
 
-    & div {
-      margin: 1em 0;
-    }
+  .contact-info {
+    margin: 1em 0;
   }
   
   .skillset {
