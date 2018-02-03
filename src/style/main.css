@@ -181,7 +181,7 @@ h1 {
     width: 100%;
     opacity: 1;
     will-change: transform;
-    background-color: rgba(0,0,0,0.65);
+    background-color: rgba(0,0,0,0.5);
     cursor: pointer;
   }
 
@@ -192,8 +192,7 @@ h1 {
     vertical-align: middle;
     min-height: 400px;
     width: 100vw;
-    z-index: 2;
-    transform: skew(0, -10deg);
+    transform: skew(0, -10deg) translateY(0vh);
     will-change: transform;
     box-shadow: 0 2px 32px 10px rgba(0,0,0,0.25);
     cursor: default;
@@ -245,11 +244,12 @@ h1 {
   }
 }
 
+/* how does this work!? */
 .modal:after {
   vertical-align: middle;
   display: inline-block;
   height: 100%;
-  margin-left: -.05em;
+  /* margin-left: -.05em; */
   content: '';
 }
 

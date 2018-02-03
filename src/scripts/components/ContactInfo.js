@@ -10,6 +10,12 @@ class Home extends PureComponent {
     this.state = { modalOpen: false };
   }
 
+  handleKeyDown = e => {
+    if (e.keyCode === 13) {
+      this.openModal();
+    }
+  };
+
   openModal = () => {
     this.setState({ modalOpen: true });
   };
@@ -21,7 +27,9 @@ class Home extends PureComponent {
   render() {
     return (
       <div className="contact-info">
-        <a onClick={this.openModal}>Contact</a>
+        <a tabIndex="1" onKeyDown={this.handleKeyDown} onClick={this.openModal}>
+          Contact
+        </a>
         <a href="http://www.linkedin.com/in/will-ashe">LinkedIn</a>
         <a href="https://github.com/willashe">GitHub</a>
 
