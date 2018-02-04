@@ -9,7 +9,7 @@ class ContactForm extends PureComponent {
 
   render() {
     return (
-      <div className="contact-form">
+      <div className="contact-form" aria-label="Contact Form">
         Contact form!
         <form>
           <ul>

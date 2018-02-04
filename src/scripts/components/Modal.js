@@ -11,7 +11,7 @@ class Modal extends PureComponent {
 
     return (
       <div className="modal" onClick={handleClose}>
-        <div className="modal-body" onClick={this.preventClose}>
+        <div className="modal-body" onClick={this.preventClose} role="dialog">
           <div className="modal-content">
             {children}
 
