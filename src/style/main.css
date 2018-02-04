@@ -173,7 +173,9 @@ h1 {
   width: 100%;
   z-index: 1;
 
-  & .modal-backdrop {
+  /* backdrop */
+  &:before {
+    content: '';
     position: fixed;
     top: 0;
     left: 0;
@@ -200,7 +202,7 @@ h1 {
   }
 
   &.modal-enter {
-    & .modal-backdrop {
+    &:before {
       opacity: 0;
     }
 
@@ -210,7 +212,7 @@ h1 {
   }
   
   &.modal-enter-active {
-    & .modal-backdrop {
+    &:before {
       opacity: 1;
       transition: opacity 500ms 0ms ease-in-out;
     }
@@ -222,7 +224,7 @@ h1 {
   }
   
   &.modal-leave {
-    & .modal-backdrop {
+    &:before {
       opacity: 1;
     }
 
@@ -232,7 +234,7 @@ h1 {
   }
   
   &.modal-leave-active {
-    & .modal-backdrop {
+    &:before {
       opacity: 0;
       transition: opacity 500ms 200ms ease-in-out;
     }

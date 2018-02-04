@@ -10,8 +10,7 @@ class Modal extends PureComponent {
     const { children, handleClose } = this.props;
 
     return (
-      <div className="modal">
-        <div className="modal-backdrop" onClick={handleClose} />
+      <div className="modal" onClick={handleClose}>
         <div className="modal-body" onClick={this.preventClose}>
           <div className="modal-content">
             {children}

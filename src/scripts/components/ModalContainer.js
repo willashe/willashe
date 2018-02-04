@@ -25,7 +25,7 @@ class ModalContainer extends PureComponent {
     return (
       <CSSTransitionGroup
         transitionName="modal"
-        transitionEnterTimeout={750}
+        transitionEnterTimeout={800}
         transitionLeaveTimeout={700}
       >
         {modalOpen && <Modal handleClose={handleClose}>{children}</Modal>}
