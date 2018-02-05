@@ -99,7 +99,20 @@ h1 {
 .contact-info {
   margin: 1em 0 0;
 
-  & a:after {
+  & button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: inherit;
+    text-shadow: inherit;
+    font-family: inherit;
+    font-size: inherit;
+
+    &:active {outline:0;}
+  }
+
+  & a:after, & button:after {
     content: ' · ';
   }
 
