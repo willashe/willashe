@@ -1,47 +1,39 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-import ModalContainer from './ModalContainer';
-import ContactForm from './ContactForm';
+import { openModal } from '../actions';
 
 class Home extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = { modalOpen: false };
-  }
+  openContactModal = () => {
+    this.props.openModal('contact');
+  };
 
   handleKeyDown = e => {
     if (e.keyCode === 13) {
-      this.openModal();
+      this.openContactModal();
     }
-  };
-
-  openModal = () => {
-    this.setState({ modalOpen: true });
-  };
-
-  closeModal = () => {
-    this.setState({ modalOpen: false });
   };
 
   render() {
     return (
       <div className="contact-info">
-        <a tabIndex="1" onKeyDown={this.handleKeyDown} onClick={this.openModal}>
+        <a
+          tabIndex="1"
+          onKeyDown={this.handleKeyDown}
+          onClick={this.openContactModal}
+        >
           Contact
         </a>
         <a href="http://www.linkedin.com/in/will-ashe">LinkedIn</a>
         <a href="https://github.com/willashe">GitHub</a>
-
-        <ModalContainer
-          modalOpen={this.state.modalOpen}
-          handleClose={this.closeModal}
-        >
-          <ContactForm />
-        </ModalContainer>
       </div>
     );
   }
 }
 
-export default Home;
+Home.propTypes = {
+  openModal: PropTypes.func.isRequired,
+};
+
+export default connect(null, { openModal })(Home);

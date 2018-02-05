@@ -1,5 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+import { closeModal } from '../actions';
 
 class Modal extends PureComponent {
   preventClose = e => {
@@ -7,16 +10,16 @@ class Modal extends PureComponent {
   };
 
   render() {
-    const { children, handleClose } = this.props;
+    const { children, closeModal } = this.props;
 
     return (
-      <div className="modal" onClick={handleClose}>
+      <div className="modal" onClick={closeModal}>
         <div className="modal-body" onClick={this.preventClose} role="dialog">
           <div className="modal-content">
             {children}
 
             <div className="modal-footer">
-              <button onClick={handleClose}>Close</button>
+              <button onClick={closeModal}>Close</button>
             </div>
           </div>
         </div>
@@ -26,8 +29,8 @@ class Modal extends PureComponent {
 }
 
 Modal.propTypes = {
-  handleClose: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
   children: PropTypes.node,
 };
 
-export default Modal;
+export default connect(null, { closeModal })(Modal);
