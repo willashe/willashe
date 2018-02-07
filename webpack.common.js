@@ -4,7 +4,6 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      title: 'Will Ashe',
       favicon: './src/favicon.ico',
     }),
   ],
