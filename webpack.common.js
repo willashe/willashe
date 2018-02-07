@@ -3,8 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Will Ashe',
       template: './src/index.html',
+      title: 'Will Ashe',
+      favicon: './src/favicon.ico',
     }),
   ],
   module: {
@@ -15,11 +16,7 @@ module.exports = {
         use: ['babel-loader'],
       },
       {
-        test: /\.(png|svg|jpg|gif|ico)$/,
-        use: ['file-loader'],
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        test: /\.(png|svg|jpg|gif|ico|woff|woff2|eot|ttf|otf)$/,
         use: ['file-loader'],
       },
     ],

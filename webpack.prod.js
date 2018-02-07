@@ -9,15 +9,11 @@ const CommonConfig = require('./webpack.common');
 module.exports = merge(CommonConfig, {
   entry: './src/scripts/index.js',
   output: {
-    filename: './bundle.js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production'),
-      },
-    }),
     new CleanWebpackPlugin(['dist']),
     new ExtractTextPlugin('styles.css'),
     new webpack.LoaderOptionsPlugin({

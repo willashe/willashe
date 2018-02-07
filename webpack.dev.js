@@ -1,28 +1,12 @@
-const webpack = require('webpack');
 const merge = require('webpack-merge');
 const CommonConfig = require('./webpack.common');
 
 module.exports = merge(CommonConfig, {
-  entry: {
-    app: ['react-hot-loader/patch', './src/scripts/index.js'],
-  },
-  output: {
-    publicPath: '/',
-  },
+  entry: './src/scripts/index.js',
   devtool: 'source-map',
   devServer: {
-    contentBase: './',
-    hot: true,
-    historyApiFallback: true,
+    compress: true,
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('development'),
-      },
-    }),
-  ],
   module: {
     rules: [
       {
