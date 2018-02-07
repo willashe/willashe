@@ -109,7 +109,9 @@ h1 {
     font-family: inherit;
     font-size: inherit;
 
-    &:active {outline:0;}
+    &:active {
+      outline: 0;
+    }
   }
 
   & a:after, & button:after {
@@ -118,6 +120,22 @@ h1 {
 
   & a:last-of-type:after {
     content: '';
+  }
+}
+
+.contact-form {
+  padding: 0 0.5em;
+  margin: 0 0.5em;
+
+  & h1 {
+    font-size: 2.5em;
+  }
+
+  & input, & textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.5em;
+    margin: 0.5em 0;
   }
 }
 
@@ -262,6 +280,16 @@ h1 {
 
 .modal-content {
   transform: skew(0, 10deg);
+}
+
+.modal-footer {
+  padding: 0.5em;
+  margin: 0.5em;
+  text-align: right;
+
+  /* & button {
+    background: #fff;
+  } */
 }
 
 @media (--medium-up) {
