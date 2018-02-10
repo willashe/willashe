@@ -1,58 +1,46 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { CSSTransitionGroup } from 'react-transition-group';
 
+import Modal from '../components/Modal';
 import ContactModal from '../components/ContactModal';
 
-import { closeModal } from '../actions';
+const ModalContainer = ({ modalType, modalTitle, modalText }) => {
+  let modalComponent = null;
 
-class ModalContainer extends PureComponent {
-  componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyDown, true);
+  switch (modalType) {
+    case 'contact':
+      modalComponent = <ContactModal />;
+      break;
+    case 'simple':
+      modalComponent = <Modal title={modalTitle}>{modalText}</Modal>;
+      break;
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleKeyDown, true);
-  }
-
-  handleKeyDown = e => {
-    if (e.key === 'Escape' || e.keyCode === 27) {
-      this.props.closeModal();
-    }
-  };
-
-  render() {
-    const { modalType } = this.props;
-
-    let modal = null;
-
-    switch (modalType) {
-      case 'contact':
-        modal = <ContactModal />;
-    }
-
-    return (
-      <CSSTransitionGroup
-        transitionName="modal"
-        transitionEnterTimeout={800}
-        transitionLeaveTimeout={700}
-      >
-        {modal}
-      </CSSTransitionGroup>
-    );
-  }
-}
+  return (
+    <CSSTransitionGroup
+      transitionName="modal"
+      transitionEnterTimeout={800}
+      transitionLeaveTimeout={700}
+    >
+      {modalComponent}
+    </CSSTransitionGroup>
+  );
+};
 
 ModalContainer.propTypes = {
   modalType: PropTypes.string,
-  closeModal: PropTypes.func.isRequired,
+  modalTitle: PropTypes.string,
+  modalText: PropTypes.string,
 };
 
 function mapStateToProps({ modal }) {
   return {
     modalType: modal.modalType,
+    modalTitle: modal.modalTitle,
+    modalText: modal.modalText,
   };
 }
 
-export default connect(mapStateToProps, { closeModal })(ModalContainer);
+export default connect(mapStateToProps)(ModalContainer);

@@ -2,6 +2,8 @@ import { OPEN_MODAL, CLOSE_MODAL } from '../actions';
 
 const initialState = {
   modalType: null,
+  modalTitle: null,
+  modalText: null,
 };
 
 export default function(state = initialState, action) {
@@ -10,6 +12,8 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case OPEN_MODAL:
       newState.modalType = action.modalType;
+      newState.modalTitle = action.modalTitle;
+      newState.modalText = action.modalText;
       break;
     case CLOSE_MODAL:
       return initialState;

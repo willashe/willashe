@@ -127,10 +127,6 @@ h1 {
   padding: 0 0.5em;
   margin: 0 0.5em;
 
-  & h1 {
-    font-size: 2.5em;
-  }
-
   & input, & textarea {
     box-sizing: border-box;
     width: 100%;
@@ -280,6 +276,20 @@ h1 {
 
 .modal-content {
   transform: skew(0, 10deg);
+
+  & .contact-form {
+    & button[type=submit] {
+      display: none;
+    }
+  }
+
+  & h1 {
+    font-size: 2.5em;
+  }
+
+  & input {
+    transform: translate3d(0,0,0);
+  }
 }
 
 .modal-footer {
