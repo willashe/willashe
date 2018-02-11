@@ -6,13 +6,15 @@ import { submit, isPristine, isInvalid, isSubmitting } from 'redux-form';
 import Modal from './Modal';
 import ContactForm from './ContactForm';
 
+import { closeModal } from '../actions';
+
 class ContactModal extends PureComponent {
   modalContactSubmit = () => {
-    this.props.dispatch(submit('contact'));
+    this.props.submit('contact');
   };
 
   render() {
-    const { pristine, invalid, submitting } = this.props;
+    const { pristine, invalid, submitting, closeModal } = this.props;
 
     return (
       <Modal
@@ -25,21 +27,25 @@ class ContactModal extends PureComponent {
           },
         ]}
       >
-        <ContactForm />
+        <ContactForm submitCallback={closeModal} />
       </Modal>
     );
   }
 }
 
 ContactModal.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  submit: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
   invalid: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired,
 };
 
-export default connect(state => ({
-  pristine: isPristine('contact')(state),
-  invalid: isInvalid('contact')(state),
-  submitting: isSubmitting('contact')(state),
-}))(ContactModal);
+export default connect(
+  state => ({
+    pristine: isPristine('contact')(state),
+    invalid: isInvalid('contact')(state),
+    submitting: isSubmitting('contact')(state),
+  }),
+  { submit, closeModal }
+)(ContactModal);

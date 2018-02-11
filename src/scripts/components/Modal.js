@@ -8,11 +8,6 @@ import { closeModal } from '../actions';
 // @TODO: implement focus trap
 class Modal extends PureComponent {
   componentDidMount() {
-    const childInputs = this.modalRef.getElementsByTagName('input');
-    const childButtons = this.modalRef.getElementsByTagName('button');
-
-    console.log(childInputs);
-    console.log(childButtons);
     window.addEventListener('keydown', this.handleKeyDown, true);
   }
 
@@ -24,14 +19,6 @@ class Modal extends PureComponent {
     if (e.key === 'Escape' || e.keyCode === 27) {
       this.props.closeModal();
     }
-
-    // if (e.key === 'Tab' || e.keyCode === 9) {
-    //   if (e.shiftKey) {
-
-    //   } else {
-
-    //   }
-    // }
   };
 
   preventClose = e => {

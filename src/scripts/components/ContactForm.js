@@ -30,11 +30,35 @@ const renderField = ({
 class ContactForm extends PureComponent {
   submit = values => {
     console.log(values);
+
     // send email...
+    return fetch('https://formspree.io/willashe@hotmail.com', {
+      method: 'POST',
+      body: JSON.stringify(values),
+      headers: new Headers({
+        'Content-Type': 'application/json',
+      }),
+    })
+      .then(res => res.json())
+      .catch(error => console.error('Error: ', error))
+      .then(response => {
+        if (!response || response.success !== 'email sent') {
+          console.error('Error: ', response);
+          throw Error(response.statusText);
+        }
+        console.log('Success: ', response);
+
+        console.log('do some cool contact-form specific animation...');
+        setTimeout(() => {
+          console.log('...then fire the callback (to close the modal)!');
+          const { submitCallback } = this.props;
+          typeof submitCallback === 'function' && submitCallback();
+        }, 1000);
+      });
   };
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, submitSucceeded, submitFailed } = this.props;
 
     return (
       <div className="contact-form" aria-label="Contact Form">
@@ -64,6 +88,8 @@ class ContactForm extends PureComponent {
             validate={[required]}
           />
           <button type="submit">Submit</button>
+          {submitFailed && <div>FAILED!</div>}
+          {submitSucceeded && <div>WHEEE!</div>}
         </Form>
       </div>
     );
@@ -72,6 +98,7 @@ class ContactForm extends PureComponent {
 
 ContactForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  submitCallback: PropTypes.func,
 };
 
 export default reduxForm({
