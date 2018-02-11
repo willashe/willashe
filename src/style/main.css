@@ -12,7 +12,7 @@
 html {
   color: var(--content);
   font-family: var(--content-font);
-  font-size: 12px;
+  font-size: 14px;
 }
 
 body {
@@ -44,7 +44,31 @@ a {
 }
 
 button {
+  padding: 0.5em 1.5em;
+  border: 1px solid var(--content);
+  border-radius: 6px;
+  margin: 0 0.5em;
+  background: rgba(255, 255, 255, .3);
+  font-size: 14px;
+  color: var(--content);
+  text-shadow: 0px 1px 1px black;
   cursor: pointer;
+  user-select: none;
+
+  &:disabled {
+    color: #949494;
+    text-shadow: none;
+    border: 1px solid #949494;
+    background: rgba(255,255,255,0.15);
+  }
+
+  &:first-of-type {
+    margin-left: 0;
+  }
+
+  &:last-of-type {
+    margin-right: 0;
+  }
 }
 
 canvas {
@@ -98,12 +122,14 @@ input, textarea {
     margin: 0.5em 0;
     border-radius: 0 14px;
     background: rgba(255, 255, 255, 0.25);
-    opacity: 0;
+    text-shadow: 0 1px 1px black;
+    opacity: 1;
     transition: opacity 500ms ease-in-out;
     will-change: opacity;
+    user-select: none;
 
-    &.visible {
-      opacity: 1;
+    &.hidden {
+      opacity: 0;
     }
   }
 }
@@ -178,7 +204,7 @@ input, textarea {
 
   & textarea {
     width: 400px;
-    height: 42px;
+    height: 222px;
     max-width: 100%;
   }
 }

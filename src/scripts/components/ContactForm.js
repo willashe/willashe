@@ -3,7 +3,19 @@ import PropTypes from 'prop-types';
 import { Form, Field, reduxForm } from 'redux-form';
 
 // field validation functions
-const required = value => (value ? undefined : 'Required');
+const required = value => (value ? undefined : 'Required field');
+const maxLength = max => value =>
+  value && value.length > max ? `Must be ${max} characters or less` : undefined;
+const maxLength40 = maxLength(40);
+const maxLength600 = maxLength(600);
+const minLength = min => value =>
+  value && value.length < min ? `Must be ${min} characters or more` : undefined;
+const minLength3 = minLength(3);
+const minLength10 = minLength(10);
+const email = value =>
+  value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
+    ? 'Invalid email address'
+    : undefined;
 
 // @TODO: implement ARIA roles
 
@@ -14,15 +26,24 @@ const renderField = ({
   type,
   autoFocus,
   textarea,
+  minLength,
+  maxLength,
   meta: { touched, error, warning },
 }) => {
   // @TODO: kinda hacky, evaluate...
   const Input = !textarea ? 'input' : 'textarea';
-  const warningClass = touched && (error || warning) ? 'visible' : '';
+  const warningClass = touched && (error || warning) ? '' : 'hidden';
 
   return (
     <div className="input-container">
-      <Input {...input} placeholder={label} type={type} autoFocus={autoFocus} />
+      <Input
+        {...input}
+        placeholder={label}
+        type={type}
+        autoFocus={autoFocus}
+        minLength={minLength}
+        maxLength={maxLength}
+      />
       <span className={warningClass}>
         {error}
         {warning}
@@ -37,7 +58,7 @@ class ContactForm extends PureComponent {
     console.log(values);
 
     // send email...
-    return fetch('https://formspree.io/willashe@hotmail.com', {
+    return fetch('https://formsspree.io/willashe@hotmail.com', {
       method: 'POST',
       body: JSON.stringify(values),
       headers: new Headers({
@@ -74,15 +95,17 @@ class ContactForm extends PureComponent {
             type="text"
             component={renderField}
             label="Name"
-            validate={[required]}
+            validate={[required, minLength3, maxLength40]}
             autoFocus={true}
+            maxLength="40"
           />
           <Field
             name="email"
-            type="text"
+            type="email"
             component={renderField}
             label="Email"
-            validate={[required]}
+            validate={[required, email, minLength10, maxLength40]}
+            maxLength="40"
           />
           <Field
             name="message"
@@ -90,8 +113,9 @@ class ContactForm extends PureComponent {
             textarea
             component={renderField}
             label="Message"
-            validate={[required]}
+            validate={[required, minLength10, maxLength600]}
             cols="40"
+            maxLength="600"
           />
           <button type="submit">Submit</button>
           {submitFailed && <div>FAILED!</div>}
