@@ -9,9 +9,12 @@
   --header-font: 'Assistant', sans-serif;  
 }
 
+* {
+  font-family: var(--content-font);
+}
+
 html {
   color: var(--content);
-  font-family: var(--content-font);
   font-size: 14px;
 }
 
@@ -22,6 +25,41 @@ body {
   overflow: hidden;
   background: #1e1d2d;
 	/* background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB); */
+	/* background-size: 400% 400%; */
+	/* animation: Gradient 15s ease infinite; */
+}
+
+/* @keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+} */
+
+@keyframes blink1 {
+  0% { opacity: 0; }
+  25% { opacity: 1; }
+  50% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes blink2 {
+  0% { opacity: 0; }
+  25% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes blink3 {
+  0% { opacity: 0; }
+  25% { opacity: 0; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 a {
@@ -49,11 +87,20 @@ button {
   border-radius: 6px;
   margin: 0 0.5em;
   background: rgba(255, 255, 255, .3);
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: bold;
   color: var(--content);
   text-shadow: 0px 1px 1px black;
   cursor: pointer;
   user-select: none;
+
+  &:hover {
+    text-shadow: 0px 1px 2px black;
+  }
+
+  &:active {
+    text-shadow: 0px 0px 1px black;
+  }
 
   &:disabled {
     color: #949494;
@@ -178,6 +225,7 @@ input, textarea {
     text-shadow: inherit;
     font-family: inherit;
     font-size: inherit;
+    font-weight: normal;
 
     &:active {
       outline: 0;
@@ -206,6 +254,72 @@ input, textarea {
     width: 400px;
     height: 222px;
     max-width: 100%;
+  }
+}
+
+.contact-overlay {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  will-change: opacity;
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 0 1px 2px black;
+
+  &.contact-overlay-enter {
+    opacity: 0;
+  }
+  
+  &.contact-overlay-enter-active {
+    opacity: 1;
+    transition: opacity 500ms 0ms ease-in-out;
+  }
+  
+  &.contact-overlay-leave {
+    opacity: 1;
+  }
+  
+  &.contact-overlay-leave-active {
+    opacity: 0;
+    transition: opacity 500ms 0ms ease-in-out;
+  }
+
+  & > div {
+    content: '';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100px;
+    width: 100px;
+    border: 2px solid var(--content);
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.25);
+    transform: translate(-50%, -50%);
+
+    & span {
+      opacity: 1;
+      will-change: opacity;
+      color: var(--content);
+
+      &:nth-of-type(1) {
+        animation: blink1 1s steps(3, start) infinite;
+      }
+
+      &:nth-of-type(2) {
+        animation: blink2 1s steps(3, start) infinite;
+      }
+
+      &:nth-of-type(3) {
+        animation: blink3 1s steps(3, start) infinite;
+      }
+    }
   }
 }
 

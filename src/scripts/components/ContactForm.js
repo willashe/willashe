@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Field, reduxForm } from 'redux-form';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 // field validation functions
 const required = value => (value ? undefined : 'Required field');
@@ -16,8 +17,6 @@ const email = value =>
   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
     ? 'Invalid email address'
     : undefined;
-
-// @TODO: implement ARIA roles
 
 /* eslint-disable react/prop-types */
 const renderField = ({
@@ -55,9 +54,8 @@ const renderField = ({
 
 class ContactForm extends PureComponent {
   submit = values => {
-    console.log(values);
+    // display submitting overlay/indicator
 
-    // send email...
     return fetch('https://formsspree.io/willashe@hotmail.com', {
       method: 'POST',
       body: JSON.stringify(values),
@@ -66,17 +64,20 @@ class ContactForm extends PureComponent {
       }),
     })
       .then(res => res.json())
-      .catch(error => console.error('Error: ', error))
+      .catch(error => {
+        // display error message
+        console.error('Error: ', error);
+      })
       .then(response => {
         if (!response || response.success !== 'email sent') {
+          // display error message
           console.error('Error: ', response);
           throw Error(response.statusText);
         }
         console.log('Success: ', response);
 
-        console.log('do some cool contact-form specific animation...');
+        // display success message
         setTimeout(() => {
-          console.log('...then fire the callback (to close the modal)!');
           const { submitCallback } = this.props;
           typeof submitCallback === 'function' && submitCallback();
         }, 1000);
@@ -84,7 +85,12 @@ class ContactForm extends PureComponent {
   };
 
   render() {
-    const { handleSubmit, submitSucceeded, submitFailed } = this.props;
+    const {
+      handleSubmit,
+      submitting,
+      submitSucceeded,
+      submitFailed,
+    } = this.props;
 
     return (
       <div className="contact-form" aria-label="Contact Form">
@@ -118,9 +124,23 @@ class ContactForm extends PureComponent {
             maxLength="600"
           />
           <button type="submit">Submit</button>
-          {submitFailed && <div>FAILED!</div>}
-          {submitSucceeded && <div>WHEEE!</div>}
         </Form>
+
+        <CSSTransitionGroup
+          transitionName="contact-overlay"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={500}
+        >
+          {submitting && (
+            <div className="contact-overlay">
+              <div>
+                Sending<span>.</span>
+                <span>.</span>
+                <span>.</span>
+              </div>
+            </div>
+          )}
+        </CSSTransitionGroup>
       </div>
     );
   }
