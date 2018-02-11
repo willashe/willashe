@@ -1,17 +1,18 @@
 /* Shared */
 @import "./colors.css";
-@import "./typography.css";
 
 @custom-media --medium-up (width >= 60em);
 
 :root {
   --icon-size: 30px;
+  --content-font: 'Assistant', sans-serif;
+  --header-font: 'Assistant', sans-serif;  
 }
 
 html {
   color: var(--content);
   font-family: var(--content-font);
-  font-size: var(--content-font-size);
+  font-size: 12px;
 }
 
 body {
@@ -19,8 +20,8 @@ body {
   height: 100vh;
   margin: 0;
   overflow: hidden;
-  background: #1e1d2d fixed center/cover no-repeat;
-  font-size: 80%;
+  background: #1e1d2d;
+	/* background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB); */
 }
 
 a {
@@ -62,6 +63,49 @@ h1, h2 {
 
 h1 {
   font-size: 4.5em;
+}
+
+input, textarea {
+  box-sizing: border-box;
+  padding: 0.5em;
+  border: 1px solid #949494;
+  border-radius: 14px;
+  outline: none;
+  color: var(--content);
+  background: transparent;
+  background: linear-gradient(160deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .1) 36%, rgba(255, 255, 255, 0.25));
+  font-size: 100%;
+  font-family: var(--content-font);
+
+  &:focus {
+    border: 1px solid var(--content);
+    background: linear-gradient(150deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .1) 46%, rgba(255, 255, 255, 0.35));
+  }
+
+  &::placeholder {
+    color: #AAAAAA;
+  }
+}
+
+.input-container {
+  position: relative;
+
+  & span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1.5em;
+    margin: 0.5em 0;
+    border-radius: 0 14px;
+    background: rgba(255, 255, 255, 0.25);
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+    will-change: opacity;
+
+    &.visible {
+      opacity: 1;
+    }
+  }
 }
 
 .app {
@@ -128,10 +172,14 @@ h1 {
   margin: 0 0.5em;
 
   & input, & textarea {
-    box-sizing: border-box;
     width: 100%;
-    padding: 0.5em;
     margin: 0.5em 0;
+  }
+
+  & textarea {
+    width: 400px;
+    height: 42px;
+    max-width: 100%;
   }
 }
 
@@ -202,7 +250,7 @@ h1 {
     height: 100%;
     width: 100%;
     opacity: 1;
-    will-change: transform;
+    will-change: opacity;
     background-color: rgba(0,0,0,0.5);
   }
 
@@ -218,6 +266,7 @@ h1 {
     box-shadow: 0 2px 32px 10px rgba(0,0,0,0.25);
     cursor: default;
     background: linear-gradient(118deg, rgba(45, 83, 85, 0.8), rgba(206, 83, 116, 0.8));
+    backface-visibility: hidden;
   }
 
   &.modal-enter {
@@ -275,6 +324,7 @@ h1 {
 }
 
 .modal-content {
+  max-width: 100%;
   transform: skew(0, 10deg);
 
   & .contact-form {
@@ -303,8 +353,8 @@ h1 {
 }
 
 @media (--medium-up) {
-  body {
-    font-size: 100%;
+  html {
+    font-size: 16px;
   }
 
   .home {

@@ -5,6 +5,8 @@ import { Form, Field, reduxForm } from 'redux-form';
 // field validation functions
 const required = value => (value ? undefined : 'Required');
 
+// @TODO: implement ARIA roles
+
 /* eslint-disable react/prop-types */
 const renderField = ({
   input,
@@ -14,19 +16,22 @@ const renderField = ({
   textarea,
   meta: { touched, error, warning },
 }) => {
-  const Type = !textarea ? 'input' : 'textarea';
+  // @TODO: kinda hacky, evaluate...
+  const Input = !textarea ? 'input' : 'textarea';
+  const warningClass = touched && (error || warning) ? 'visible' : '';
 
   return (
-    <div>
-      <Type {...input} placeholder={label} type={type} autoFocus={autoFocus} />
-      {touched &&
-        ((error && <div>{error}</div>) || (warning && <div>{warning}</div>))}
+    <div className="input-container">
+      <Input {...input} placeholder={label} type={type} autoFocus={autoFocus} />
+      <span className={warningClass}>
+        {error}
+        {warning}
+      </span>
     </div>
   );
 };
 /* eslint-disable no-use-before-define */
 
-// @TODO: implement A11y, ARIA, etc.
 class ContactForm extends PureComponent {
   submit = values => {
     console.log(values);
@@ -70,7 +75,7 @@ class ContactForm extends PureComponent {
             component={renderField}
             label="Name"
             validate={[required]}
-            autoFocus
+            autoFocus={true}
           />
           <Field
             name="email"
@@ -86,6 +91,7 @@ class ContactForm extends PureComponent {
             component={renderField}
             label="Message"
             validate={[required]}
+            cols="40"
           />
           <button type="submit">Submit</button>
           {submitFailed && <div>FAILED!</div>}

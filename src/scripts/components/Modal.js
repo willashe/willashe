@@ -6,6 +6,8 @@ import { map } from 'lodash';
 import { closeModal } from '../actions';
 
 // @TODO: implement focus trap
+// @TODO: add aria-hidden to all obscured content when modal is open
+// @TODO: ARIA modal roles?
 class Modal extends PureComponent {
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyDown, true);
