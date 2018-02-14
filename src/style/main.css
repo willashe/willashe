@@ -16,6 +16,13 @@
 html {
   color: var(--content);
   font-size: 14px;
+  opacity: 0;
+  will-change: opacity;
+
+  &.wf-active {
+    opacity: 1;
+    transition: opacity 700ms ease-in-out;
+  }
 }
 
 body {
@@ -103,10 +110,11 @@ button {
   }
 
   &:disabled {
-    color: #949494;
-    text-shadow: none;
+    color: #b9b9b9;
+    text-shadow: 0px 1px 0 black;
     border: 1px solid #949494;
     background: rgba(255,255,255,0.15);
+    cursor: default;
   }
 
   &:first-of-type {
@@ -154,7 +162,7 @@ input, textarea {
   }
 
   &::placeholder {
-    color: #AAAAAA;
+    color: #aaaaaa;
   }
 }
 
@@ -251,10 +259,12 @@ input, textarea {
   }
 
   & textarea {
-    width: 400px;
     height: 222px;
-    max-width: 100%;
   }
+}
+
+.contact-form-info {
+  height: 14px;
 }
 
 .contact-overlay {
@@ -464,7 +474,8 @@ input, textarea {
 }
 
 .modal-content {
-  max-width: 100%;
+  width: 100%;
+  max-width: 400px;
   transform: skew(0, 10deg);
 
   & .contact-form {
@@ -486,10 +497,6 @@ input, textarea {
   padding: 0.5em;
   margin: 0.5em;
   text-align: right;
-
-  /* & button {
-    background: #fff;
-  } */
 }
 
 @media (--medium-up) {
@@ -524,5 +531,10 @@ input, textarea {
     & ul {
       justify-content: flex-start;
     }
+  }
+
+  .modal-content {
+    min-width: 400px;
+    width: auto;
   }
 }

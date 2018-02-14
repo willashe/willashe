@@ -34,7 +34,8 @@
     "react-redux": "^5.0.6",
     "react-transition-group": "1.x",
     "redux": "^3.7.2",
-    "redux-form": "^7.2.3"
+    "redux-form": "^7.2.3",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",

@@ -6,7 +6,6 @@ import ModalContainer from './ModalContainer';
 const App = () => (
   <div className="app">
     <Home />
-
     <ModalContainer />
   </div>
 );

@@ -4,7 +4,7 @@ import { Form, Field, reduxForm } from 'redux-form';
 import { CSSTransitionGroup } from 'react-transition-group';
 
 // field validation functions
-const required = value => (value ? undefined : 'Required field');
+const required = value => (value ? undefined : 'required field');
 const maxLength = max => value =>
   value && value.length > max ? `Must be ${max} characters or less` : undefined;
 const maxLength40 = maxLength(40);
@@ -54,9 +54,7 @@ const renderField = ({
 
 class ContactForm extends PureComponent {
   submit = values => {
-    // display submitting overlay/indicator
-
-    return fetch('https://formsspree.io/willashe@hotmail.com', {
+    return fetch('https://fordmspree.io/willashe@hotmail.com', {
       method: 'POST',
       body: JSON.stringify(values),
       headers: new Headers({
@@ -65,22 +63,19 @@ class ContactForm extends PureComponent {
     })
       .then(res => res.json())
       .catch(error => {
-        // display error message
         console.error('Error: ', error);
+        throw Error(error);
       })
       .then(response => {
         if (!response || response.success !== 'email sent') {
-          // display error message
           console.error('Error: ', response);
           throw Error(response.statusText);
         }
-        console.log('Success: ', response);
 
-        // display success message
         setTimeout(() => {
           const { submitCallback } = this.props;
           typeof submitCallback === 'function' && submitCallback();
-        }, 1000);
+        }, 600);
       });
   };
 
@@ -91,7 +86,7 @@ class ContactForm extends PureComponent {
       submitSucceeded,
       submitFailed,
     } = this.props;
-
+    console.log(this.props);
     return (
       <div className="contact-form" aria-label="Contact Form">
         <h1>Contact</h1>
@@ -126,6 +121,15 @@ class ContactForm extends PureComponent {
           <button type="submit">Submit</button>
         </Form>
 
+        <div className="contact-form-info">
+          {!submitting &&
+            submitSucceeded && <span>&#10003; Message sent!</span>}
+          {!submitting &&
+            submitFailed && (
+              <span>&#9888; Whoa! Something happened, please try again.</span>
+            )}
+        </div>
+
         <CSSTransitionGroup
           transitionName="contact-overlay"
           transitionEnterTimeout={500}
@@ -134,7 +138,8 @@ class ContactForm extends PureComponent {
           {submitting && (
             <div className="contact-overlay">
               <div>
-                Sending<span>.</span>
+                Sending
+                <span>.</span>
                 <span>.</span>
                 <span>.</span>
               </div>
