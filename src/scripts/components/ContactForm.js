@@ -54,21 +54,21 @@ const renderField = ({
 
 class ContactForm extends PureComponent {
   submit = values => {
-    return fetch('https://fordmspree.io/willashe@hotmail.com', {
+    return fetch('https://formdspree.io/willashe@hotmail.com', {
       method: 'POST',
       body: JSON.stringify(values),
       headers: new Headers({
         'Content-Type': 'application/json',
       }),
     })
-      .then(res => res.json())
+      .then(response => response.json())
       .catch(error => {
-        console.error('Error: ', error);
+        console.error('Error:', error);
         throw Error(error);
       })
       .then(response => {
         if (!response || response.success !== 'email sent') {
-          console.error('Error: ', response);
+          console.error('Error: ', response || 'no response.');
           throw Error(response.statusText);
         }
 
@@ -82,11 +82,12 @@ class ContactForm extends PureComponent {
   render() {
     const {
       handleSubmit,
+      valid,
       submitting,
       submitSucceeded,
       submitFailed,
     } = this.props;
-    console.log(this.props);
+
     return (
       <div className="contact-form" aria-label="Contact Form">
         <h1>Contact</h1>
@@ -118,7 +119,9 @@ class ContactForm extends PureComponent {
             cols="40"
             maxLength="600"
           />
-          <button type="submit">Submit</button>
+          <button disabled={submitting || !valid} type="submit">
+            Submit
+          </button>
         </Form>
 
         <div className="contact-form-info">
@@ -126,7 +129,10 @@ class ContactForm extends PureComponent {
             submitSucceeded && <span>&#10003; Message sent!</span>}
           {!submitting &&
             submitFailed && (
-              <span>&#9888; Whoa! Something happened, please try again.</span>
+              <span>
+                &#9888; Whoa! Something weird happened...maybe try me on{' '}
+                <a href="http://www.linkedin.com/in/will-ashe">LinkedIn</a> ;)
+              </span>
             )}
         </div>
 
