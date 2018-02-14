@@ -54,7 +54,7 @@ const renderField = ({
 
 class ContactForm extends PureComponent {
   submit = values => {
-    return fetch('https://formdspree.io/willashe@hotmail.com', {
+    return fetch('https://formspree.io/willashe@hotmail.com', {
       method: 'POST',
       body: JSON.stringify(values),
       headers: new Headers({
