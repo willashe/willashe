@@ -24,8 +24,7 @@
     ]
   },
   "dependencies": {
-    "popmotion": "^8.1.9",
-    "popmotion-react": "^2.1.0",
+    "lodash": "^4.17.5",
     "postcss": "^6.0.8",
     "postcss-cssnext": "^3.0.2",
     "postcss-import": "^11.0.0",
@@ -34,7 +33,9 @@
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-transition-group": "1.x",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "redux-form": "^7.2.3",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -45,7 +46,7 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.16",
-    "css-loader": "^0.28.4",
+    "css-loader": "^0.28.9",
     "eslint": "^4.4.0",
     "eslint-config-google": "^0.9.1",
     "eslint-config-prettier": "^2.3.0",
@@ -57,7 +58,6 @@
     "lint-staged": "^6.1.0",
     "postcss-loader": "^2.0.6",
     "prettier": "^1.5.3",
-    "react-hot-loader": "next",
     "style-loader": "^0.20.1",
     "stylelint": "^8.0.0",
     "stylelint-config-recommended": "^2.0.1",

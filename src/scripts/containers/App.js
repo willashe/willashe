@@ -1,11 +1,12 @@
 import React from 'react';
 
 import Home from '../components/Home';
+import ModalContainer from './ModalContainer';
 
 const App = () => (
   <div className="app">
     <Home />
-    <div className="marquee right" />
+    <ModalContainer />
   </div>
 );
 
