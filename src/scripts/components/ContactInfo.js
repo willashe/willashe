@@ -12,6 +12,7 @@ class Home extends PureComponent {
   render() {
     return (
       <div className="contact-info">
+        <button onClick={this.openContactModal}>Contact</button>
         <a href="http://www.linkedin.com/in/will-ashe">LinkedIn</a>
         <a href="https://github.com/willashe">GitHub</a>
       </div>

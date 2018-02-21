@@ -54,22 +54,25 @@ const renderField = ({
 
 class ContactForm extends PureComponent {
   submit = values => {
-    return fetch('https://formspree.io/willashe@hotmail.com', {
-      method: 'POST',
-      body: JSON.stringify(values),
-      headers: new Headers({
-        'Content-Type': 'application/json',
-      }),
-    })
+    return fetch(
+      'https://2eg5p6ga02.execute-api.us-east-1.amazonaws.com/prod',
+      {
+        method: 'POST',
+        body: JSON.stringify(values),
+        headers: new Headers({
+          'Content-Type': 'application/json',
+        }),
+      }
+    )
       .then(response => response.json())
       .catch(error => {
         console.error('Error:', error);
         throw Error(error);
       })
       .then(response => {
-        if (!response || response.success !== 'email sent') {
+        if (!response || response.statusCode !== 200) {
           console.error('Error: ', response || 'no response.');
-          throw Error(response.statusText);
+          throw Error(response);
         }
 
         setTimeout(() => {
