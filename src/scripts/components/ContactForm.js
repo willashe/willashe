@@ -66,12 +66,12 @@ class ContactForm extends PureComponent {
     )
       .then(response => response.json())
       .catch(error => {
-        console.error('Error:', error);
+        console.error('Error:', error); // eslint-disable-line no-console
         throw Error(error);
       })
       .then(response => {
         if (!response || response.statusCode !== 200) {
-          console.error('Error: ', response || 'no response.');
+          console.error('Error: ', response || 'no response.'); // eslint-disable-line no-console
           throw Error(response);
         }
 
