@@ -6,11 +6,11 @@ import { CSSTransitionGroup } from 'react-transition-group';
 // field validation functions
 const required = value => (value ? undefined : 'required field');
 const maxLength = max => value =>
-  value && value.length > max ? `Must be ${max} characters or less` : undefined;
+  value && value.length > max ? `${max} characters maximum` : undefined;
 const maxLength40 = maxLength(40);
 const maxLength600 = maxLength(600);
 const minLength = min => value =>
-  value && value.length < min ? `Must be ${min} characters or more` : undefined;
+  value && value.length < min ? `${min} characters minimum` : undefined;
 const minLength3 = minLength(3);
 const minLength10 = minLength(10);
 const email = value =>
