@@ -243,10 +243,12 @@ input, textarea {
 
   & a:after, & button:after {
     content: ' · ';
+    margin: 0 0.25em;
   }
 
   & a:last-of-type:after {
     content: '';
+    margin: 0;
   }
 }
 
