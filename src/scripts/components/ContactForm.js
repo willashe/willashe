@@ -15,7 +15,7 @@ const minLength3 = minLength(3);
 const minLength10 = minLength(10);
 const email = value =>
   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
-    ? 'Invalid email address'
+    ? 'invalid email address'
     : undefined;
 
 /* eslint-disable react/prop-types */
