@@ -242,7 +242,7 @@ input, textarea {
   }
 
   & a:after, & button:after {
-    content: ' · ';
+    content: '·';
     margin: 0 0.25em;
   }
 
