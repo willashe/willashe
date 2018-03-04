@@ -3,6 +3,8 @@ const merge = require('webpack-merge');
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const CommonConfig = require('./webpack.common');
 
@@ -16,6 +18,12 @@ module.exports = merge(CommonConfig, {
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new ExtractTextPlugin('styles.css'),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      favicon: './src/favicon.ico',
+      manifest: '/manifest.json',
+    }),
+    new CopyWebpackPlugin([{ from: './src/manifest.json' }]),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false,
