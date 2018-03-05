@@ -38,92 +38,9 @@ class Modal extends PureComponent {
             onClick={this.preventClose}
             role="dialog"
           >
-            START sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg
-            sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgssadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs
-            asdfg sadfg sadfgs asdfg sadfg END
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
-
-Modal.propTypes = {
-  title: PropTypes.string,
-  actions: PropTypes.arrayOf(PropTypes.object),
-  closeModal: PropTypes.func.isRequired,
-  children: PropTypes.node,
-};
-
-export default connect(null, { closeModal })(Modal);
-
-/*
-
-          <div className="modal-content">
             {title && <h1>{title}</h1>}
 
             {children}
-
-            <p>
-              sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg sadfgs asdfg sadfg 
-            </p>
 
             <div className="modal-footer">
               {map(actions, (action, i) => {
@@ -140,5 +57,17 @@ export default connect(null, { closeModal })(Modal);
               <button onClick={closeModal}>Close</button>
             </div>
           </div>
+        </div>
+      </div>
+    );
+  }
+}
 
-          */
+Modal.propTypes = {
+  title: PropTypes.string,
+  actions: PropTypes.arrayOf(PropTypes.object),
+  closeModal: PropTypes.func.isRequired,
+  children: PropTypes.node,
+};
+
+export default connect(null, { closeModal })(Modal);
