@@ -389,48 +389,81 @@ input, textarea {
 
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
+  display: flex;
+  overflow: auto;
   height: 100%;
   width: 100%;
-  overflow: auto;
   cursor: pointer;
 
   /* backdrop */
   &:before {
     content: '';
     position: fixed;
-    top: 0;
-    left: 0;
     height: 100%;
     width: 100%;
+    background-color: rgba(0,0,0,0.65);
     opacity: 1;
     will-change: opacity;
-    background-color: rgba(0,0,0,0.65);
+  }
+
+  & .modal-marquee {
+    position: fixed;
+    top: 15vh;
+    width: 100vw;
+    height: 70vh;
+    transform: skew(0, -10deg) translateY(0vh);
+    will-change: transform;
+    background: linear-gradient(118deg, rgba(45, 83, 85, 0.8), rgba(206, 83, 116, 0.8));
+    box-shadow: 0 2px 32px 10px rgba(0,0,0,0.25);
+    cursor: default; 
   }
 
   & .modal-body {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    vertical-align: middle;
-    min-height: 400px;
-    width: 100vw;
-    transform: skew(0, -10deg) translateY(0vh);
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    transform: translateY(0vh);
     will-change: transform;
-    box-shadow: 0 2px 32px 10px rgba(0,0,0,0.25);
+  }
+
+  & .modal-content {
     cursor: default;
-    background: linear-gradient(118deg, rgba(45, 83, 85, 0.8), rgba(206, 83, 116, 0.8));
-    backface-visibility: hidden;
+    opacity: 1;
+
+    width: 100%;
+
+    & .contact-form {
+      & button[type=submit] {
+        display: none;
+      }
+    }
+  
+    & h1 {
+      font-size: 2.5em;
+    }
+  
+    & input {
+      transform: translate3d(0,0,0);
+    }
   }
 
   &.modal-enter {
+    overflow: hidden;
+
     &:before {
       opacity: 0;
     }
-
-    & .modal-body {
+    
+    & .modal-marquee {
       transform: skew(0, -10deg) translateY(-150vh);
+    }
+    
+    & .modal-body {
+      transform: translateY(-150vh);
+    }
+
+    & .modal-content {
+      opacity: 0;
     }
   }
   
@@ -440,19 +473,39 @@ input, textarea {
       transition: opacity 500ms 0ms ease-in-out;
     }
 
-    & .modal-body {
+    & .modal-marquee {
       transform: skew(0, -10deg) translateY(0vh);
       transition: transform 500ms 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    & .modal-body {
+      transform: translateY(0vh);
+      transition: transform 500ms 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    & .modal-content {
+      opacity: 1;
+      transition: opacity 300ms 0ms ease-in-out;
     }
   }
   
   &.modal-leave {
+    overflow: hidden;
+
     &:before {
       opacity: 1;
     }
 
-    & .modal-body {
+    & .modal-marquee {
       transform: skew(0, -10deg) translateY(0vh);
+    }
+
+    & .modal-body {
+      transform: translateY(0vh);
+    }
+
+    & .modal-content {
+      opacity: 1;
     }
   }
   
@@ -462,39 +515,20 @@ input, textarea {
       transition: opacity 500ms 200ms ease-in-out;
     }
 
-    & .modal-body {
+    & .modal-marquee {
       transform: skew(0, -10deg) translateY(150vh);
       transition: transform 500ms 0ms cubic-bezier(0.60, -0.28, 0.735, 0.045);
     }
-  }
-}
 
-/* how does this work!? */
-.modal:after {
-  vertical-align: middle;
-  display: inline-block;
-  height: 100%;
-  /* margin-left: -.05em; */
-  content: '';
-}
-
-.modal-content {
-  width: 100%;
-  max-width: 400px;
-  transform: skew(0, 10deg);
-
-  & .contact-form {
-    & button[type=submit] {
-      display: none;
+    & .modal-body {
+      transform: translateY(150vh);
+      transition: transform 500ms 0ms cubic-bezier(0.60, -0.28, 0.735, 0.045);
     }
-  }
 
-  & h1 {
-    font-size: 2.5em;
-  }
-
-  & input {
-    transform: translate3d(0,0,0);
+    & .modal-content {
+      opacity: 0;
+      transition: opacity 300ms 400ms ease-in-out;
+    }
   }
 }
 
@@ -545,32 +579,9 @@ input, textarea {
   }
 
   .modal {
-    & .modal-body {
-      transform: skew(0, -10deg) translateY(0vh);
-    }
-  
-    &.modal-enter {
-      & .modal-body {
-        transform: skew(0, -10deg) translateY(-120vh);
-      }
-    }
-
-    &.modal-enter-active {
-      & .modal-body {
-        transform: skew(0, -10deg) translateY(0vh);
-      }
-    }
-    
-    &.modal-leave {
-      & .modal-body {
-        transform: skew(0, -10deg) translateY(0vh);
-      }
-    }
-
-    &.modal-leave-active {
-      & .modal-body {
-        transform: skew(0, -10deg) translateY(120vh);
-      }
+    & .modal-marquee {
+      top: 25vh;
+      height: 50vh;
     }
   }
 

@@ -31,8 +31,13 @@ class Modal extends PureComponent {
 
     return (
       <div className="modal" onClick={closeModal}>
-        <div className="modal-body" onClick={this.preventClose} role="dialog">
-          <div className="modal-content">
+        <div className="modal-marquee" onClick={this.preventClose} />
+        <div className="modal-body">
+          <div
+            className="modal-content"
+            onClick={this.preventClose}
+            role="dialog"
+          >
             {title && <h1>{title}</h1>}
 
             {children}
