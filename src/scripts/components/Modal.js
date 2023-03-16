@@ -1,33 +1,33 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { map } from 'lodash';
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { map } from 'lodash'
 
-import { closeModal } from '../actions';
+import { closeModal } from '../actions'
 
 // @TODO: implement focus trap
 // @TODO: add aria-hidden to all obscured content when modal is open?
 class Modal extends PureComponent {
   componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyDown, true);
+    window.addEventListener('keydown', this.handleKeyDown, true)
   }
 
   componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleKeyDown, true);
+    window.removeEventListener('keydown', this.handleKeyDown, true)
   }
 
-  handleKeyDown = e => {
+  handleKeyDown = (e) => {
     if (e.key === 'Escape' || e.keyCode === 27) {
-      this.props.closeModal();
+      this.props.closeModal()
     }
-  };
+  }
 
-  preventClose = e => {
-    e.stopPropagation();
-  };
+  preventClose = (e) => {
+    e.stopPropagation()
+  }
 
   render() {
-    const { title, actions, closeModal, children } = this.props;
+    const { title, actions, closeModal, children } = this.props
 
     return (
       <div className="modal" onClick={closeModal}>
@@ -52,14 +52,14 @@ class Modal extends PureComponent {
                   >
                     {action.label}
                   </button>
-                );
+                )
               })}
               <button onClick={closeModal}>Close</button>
             </div>
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -68,6 +68,6 @@ Modal.propTypes = {
   actions: PropTypes.arrayOf(PropTypes.object),
   closeModal: PropTypes.func.isRequired,
   children: PropTypes.node,
-};
+}
 
-export default connect(null, { closeModal })(Modal);
+export default connect(null, { closeModal })(Modal)

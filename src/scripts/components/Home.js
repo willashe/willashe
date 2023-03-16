@@ -1,14 +1,16 @@
-import React from 'react';
+import React from 'react'
 
-import ContactInfo from './ContactInfo';
-import Skillset from './Skillset';
+import ContactInfo from './ContactInfo'
+import Skillset from './Skillset'
 
 const Home = () => (
   <div className="home">
     <div className="intro">
       <h1>Will Ashe</h1>
       <h2>
-        Web Developer<br />Austin, TX
+        Software Engineer
+        <br />
+        Austin, TX
       </h2>
 
       <ContactInfo />
@@ -16,6 +18,6 @@ const Home = () => (
 
     <Skillset />
   </div>
-);
+)
 
-export default Home;
+export default Home
