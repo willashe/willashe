@@ -3,7 +3,7 @@ import './globals.css';
 export const metadata = {
   title: 'Will Ashe',
   description:
-    'Will Ashe is a software engineer, artist, and musician based in Austin, TX.',
+    'Will Ashe - Software engineer, artist, and musician based in Austin, TX.',
 };
 
 export default function RootLayout({
