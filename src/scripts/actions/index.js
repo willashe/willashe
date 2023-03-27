@@ -1,5 +1,5 @@
-export const OPEN_MODAL = 'open_modal';
-export const CLOSE_MODAL = 'close_modal';
+export const OPEN_MODAL = 'open_modal'
+export const CLOSE_MODAL = 'close_modal'
 
 export function openModal(modalType, modalTitle, modalText) {
   return {
@@ -7,11 +7,11 @@ export function openModal(modalType, modalTitle, modalText) {
     modalType,
     modalTitle,
     modalText,
-  };
+  }
 }
 
 export function closeModal() {
   return {
     type: CLOSE_MODAL,
-  };
+  }
 }

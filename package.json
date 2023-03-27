@@ -9,13 +9,13 @@
     "start": "webpack-dev-server --env=dev --progress --profile",
     "build": "npm run cleanup && webpack --env=prod --progress --profile",
     "cleanup": "npm run prettier && npm run stylelint",
-    "prettier": "prettier './src/{,!(node_modules)/**/}*.js' --single-quote --trailing-comma es5 --write",
+    "prettier": "prettier './src/{,!(node_modules)/**/}*.js' --write",
     "stylelint": "stylelint './src/**/*.css' --fix",
     "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.js": [
-      "prettier --single-quote --write",
+      "prettier --write",
       "git add"
     ],
     "*.css": [
@@ -48,17 +48,17 @@
     "clean-webpack-plugin": "^0.1.16",
     "copy-webpack-plugin": "^4.5.0",
     "css-loader": "^0.28.9",
-    "eslint": "^4.4.0",
-    "eslint-config-google": "^0.9.1",
-    "eslint-config-prettier": "^2.3.0",
-    "eslint-plugin-react": "^7.1.0",
+    "eslint": "^8.24.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-react": "^7.32.2",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.6",
     "html-webpack-plugin": "^2.30.1",
     "husky": "^0.14.3",
     "lint-staged": "^6.1.0",
     "postcss-loader": "^2.0.6",
-    "prettier": "^1.5.3",
+    "prettier": "^2.8.4",
     "style-loader": "^0.20.1",
     "stylelint": "^8.0.0",
     "stylelint-config-recommended": "^2.0.1",

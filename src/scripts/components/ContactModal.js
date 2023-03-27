@@ -1,32 +1,27 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import {
   submit,
   isPristine,
   isInvalid,
   isSubmitting,
   hasSubmitSucceeded,
-} from 'redux-form';
+} from 'redux-form'
 
-import Modal from './Modal';
-import ContactForm from './ContactForm';
+import Modal from './Modal'
+import ContactForm from './ContactForm'
 
-import { closeModal } from '../actions';
+import { closeModal } from '../actions'
 
 class ContactModal extends PureComponent {
   modalContactSubmit = () => {
-    this.props.submit('contact');
-  };
+    this.props.submit('contact')
+  }
 
   render() {
-    const {
-      pristine,
-      invalid,
-      submitting,
-      submitSucceeded,
-      closeModal,
-    } = this.props;
+    const { pristine, invalid, submitting, submitSucceeded, closeModal } =
+      this.props
 
     return (
       <Modal
@@ -41,7 +36,7 @@ class ContactModal extends PureComponent {
       >
         <ContactForm submitCallback={closeModal} />
       </Modal>
-    );
+    )
   }
 }
 
@@ -52,14 +47,14 @@ ContactModal.propTypes = {
   submitting: PropTypes.bool.isRequired,
   submitSucceeded: PropTypes.bool.isRequired,
   closeModal: PropTypes.func.isRequired,
-};
+}
 
 export default connect(
-  state => ({
+  (state) => ({
     pristine: isPristine('contact')(state),
     invalid: isInvalid('contact')(state),
     submitting: isSubmitting('contact')(state),
     submitSucceeded: hasSubmitSucceeded('myForm')(state),
   }),
   { submit, closeModal }
-)(ContactModal);
+)(ContactModal)
